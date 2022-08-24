@@ -97,7 +97,7 @@ object Lab2 extends jsy.util.JsyApplication with Lab2Like {
 
 
   /* Interface to run your interpreter from the command-line.  You can ignore what's below. */
-  def processFile(file: java.io.File) {
+  def processFile(file: java.io.File): Unit =  {
     if (debug) { println("Parsing ...") }
 
     val expr = Parser.parseFile(file)

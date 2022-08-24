@@ -46,9 +46,20 @@ jobs:
           path: grading_files
 
       - name: Prep Grading
-        run: ./grade.sh prepare . "jsy.grader.Lab2Grading"
+        run: ./gradepreplab2.sh .
         working-directory: ./master_code
 
+      # Grade the current
       - name: Grade current 
-        run: ./gradelab2.sh ../student_code ../grading_files ../
+        run: ./gradelab2.sh ../student_code . ../ 2>&1 | tee ../grading.log
         working-directory: ./master_code
+
+      # Display the score
+      - name: Display Score
+        run: tail -n 1 grading.log
+
+      - name: Upload Grading Log
+        uses: actions/upload-artifact@v3
+        with:
+          name: grading.log
+          path: grading.log

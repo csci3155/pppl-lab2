@@ -46,7 +46,7 @@ jobs:
           path: grading_files
 
       - name: Prep Grading
-        run: ./grade.sh prepare . "jsy.grader.Lab1Grading"
+        run: ./grade.sh prepare . "jsy.grader.Lab2Grading"
         working-directory: ./master_code
 
       - name: Grade current 

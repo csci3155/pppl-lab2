@@ -4,6 +4,7 @@ import jsy.lab2.Lab2Like
 import jsy.lab2.ast._
 import jsy.tester.JavascriptyTester
 import org.scalatest._
+import flatspec._
 
 /*
  * This file contains a number of *Spec classes that define a set of
@@ -12,7 +13,7 @@ import org.scalatest._
  * All of the tests are gathered together in Lab2Suite.
  */
 
-class Lab2Spec(lab2: Lab2Like) extends FlatSpec {
+class Lab2Spec(lab2: Lab2Like) extends AnyFlatSpec {
   import lab2._
 
   "And" should "return true only if both expressions are true" in {
@@ -250,8 +251,4 @@ class Lab2SpecRunner extends Lab2Spec(Lab2)
 // The test expects a corresponding .ans file with the expected result.
 class Lab2JsyTests extends JavascriptyTester(None, "lab2", Lab2)
 
-class Lab2Suite extends Suites(
-  new Lab2SpecRunner,
-  new Lab2JsyTests
-)
 

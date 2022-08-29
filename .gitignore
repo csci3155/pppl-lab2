@@ -1,6 +1,12 @@
 .idea
 target/
-project/target/
-project/project/
+project/target/*
+project/project/*
 .ivy2
 .sbt
+.metals/
+.vscode/
+.ammonite/
+.bloop/
+project/metals.sbt
+.bloop/

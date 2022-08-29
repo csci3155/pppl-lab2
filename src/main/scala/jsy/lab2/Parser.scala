@@ -80,7 +80,7 @@ object Parser extends TokenParser {
   
   def stmts: Parser[Option[Expr] => Expr] =
     rep(stmt) ^^ { (stmts: List[PStmt]) => (body: Option[Expr]) =>
-      (stmts :\ body){
+      (stmts foldRight body){
         case (EmpPStmt, eopt) => eopt
         case (ExprPStmt(e), None) => Some(e)
         case (ExprPStmt(e1), Some(e2)) => Some(seqExpr(e1, e2))
@@ -115,7 +115,7 @@ object Parser extends TokenParser {
   def seq: Parser[Expr] =
     noseq ~ withposrep("," ~> noseq) ^^ {
       case e0 ~ es => 
-        (es :\ (None: Option[(Position,Expr)])){
+        (es foldRight (None: Option[(Position,Expr)])){
           case ((posi,ei), None) => Some(posi,ei)
           case ((posi,ei), Some((pos,e))) => Some(posi, seqExpr(ei,e) setPos pos)
         } match {

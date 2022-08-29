@@ -14,12 +14,10 @@ lazy val commonSettings = Seq(
     "-Ywarn-extra-implicit", // more than one implicit parameter section is defined
     "-Xlint:nullary-unit", // nullary methods return Unit
     "-Xlint:inaccessible", // inaccessible types in method signatures
-    "-Xlint:nullary-override", // non-nullary def f() overrides nullary def f
     "-Xlint:infer-any", // a type argument is inferred to be Any
     "-Xlint:missing-interpolator", // literal appears to be missing an interpolator id
     "-Xlint:option-implicit", // apply used implicit view
     "-Xlint:package-object-classes", // object defined in package object
-    "-Xlint:unsound-match", // may not be typesafe
     "-Xlint:stars-align", // wildcard must align with sequence component
     "-Xlint:constant", // a constant arithmetic expression results in an error
     //"-Xfatal-warnings", // turn warnings into errors

@@ -37,7 +37,7 @@ object options {
     }
       
     val descriptions: String = {
-      (specs :\ "")((spec, acc) => spec match {
+      (specs foldRight "")((spec, acc) => spec match {
         case (name, SetBool(_, default), desc) => {
           def defaultStr(b: Boolean): String =
             default map (f => if (f(b)) " (default)" else "") getOrElse("") 

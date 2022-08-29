@@ -219,7 +219,8 @@ object Parser extends TokenParser {
     phrase(prog)(tokens) match {
       case Success(e, _) => e
       case NoSuccess(msg, next) => throw new SyntaxError(msg, next)
-      case _ => throw new RuntimeException("Invalid flow reached.")
+      case Error(msg,next) => throw new SyntaxError(msg, next)
+      case Failure(msg,next) => throw new SyntaxError(msg, next)
     }
   }
     

@@ -9,3 +9,4 @@ project/project/*
 .ammonite/
 .bloop/
 project/metals.sbt
+.bloop/

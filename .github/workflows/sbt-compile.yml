@@ -18,13 +18,13 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    timeout-minutes: 10
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
        - name: Setup JDK
         uses: actions/setup-java@v3
+        timeout-minutes: 10
         with:
           distribution: temurin
           java-version: 11
@@ -32,8 +32,10 @@ jobs:
 
       - name: Get Student Repo
         uses: actions/checkout@v3
+        timeout-minutes: 10
         with:
           path: student_code
 
       - name: Run sbt compile
+        timeout-minutes: 10
         run: sbt compile

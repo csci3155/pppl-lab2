@@ -19,19 +19,20 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    timeout-minutes: 10
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Student Repo
         uses: actions/checkout@v3
+        timeout-minutes: 10
         with:
           path: student_code
 
       # Runs a single command using the runners shell
       - name: Master Repo
         uses: actions/checkout@v3
+        timeout-minutes: 10
         with:
           ref: version-bump
           token: ${{secrets.F22_3155_PAT}}
@@ -40,6 +41,7 @@ jobs:
 
       - name: Master Repo as Grading Files
         uses: actions/checkout@v3
+        timeout-minutes: 10
         with:
           ref: version-bump
           token: ${{secrets.F22_3155_PAT}}
@@ -47,11 +49,13 @@ jobs:
           path: grading_files
 
       - name: Prep Grading
+        timeout-minutes: 10
         run: ./gradepreplab2.sh .
         working-directory: ./master_code
 
       # Grade the current
       - name: Grade current 
+        timeout-minutes: 10
         run: ./gradelab2.sh ../student_code . ../ 2>&1 | tee ../grading.log
         working-directory: ./master_code
 
@@ -60,6 +64,7 @@ jobs:
         run: tail -n 1 grading.log
 
       - name: Upload Grading Log
+        timeout-minutes: 10
         uses: actions/upload-artifact@v3
         with:
           name: grading.log

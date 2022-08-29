@@ -7,7 +7,7 @@ object options {
 
   class Options[T](program: String, specs: List[(String, Spec, String)], anon: (String, PartialFunction[List[String], T], String)) {
     val opts: Map[String, List[String] => Option[List[String]]] =
-      (Map[String, List[String] => Option[List[String]]]() /: specs)((acc, spec) => spec match {
+      specs.foldLeft[Map[String, List[String] => Option[List[String]]]](Map.empty)((acc, spec) => spec match {
         case (name, SetBool(setter, _), _) =>
           acc +
           (("--" + name) -> { (t: List[String]) => setter(true); Some(t) }) +

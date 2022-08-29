@@ -164,7 +164,7 @@ object Parser extends TokenParser {
       withpos(op) ^^ { case (pos, _) => ((e1, e2) => f(e1, e2) setPos pos) }
     }
     val bopf0 :: bopfrest = binaryOperators(level)
-    (doBop(bopf0) /: bopfrest)((acc, bopf) => acc | doBop(bopf))
+    bopfrest.foldLeft(doBop(bopf0))((acc, bopf) => acc | doBop(bopf))
   }
 
   def unary: Parser[Expr] =
@@ -219,6 +219,7 @@ object Parser extends TokenParser {
     phrase(prog)(tokens) match {
       case Success(e, _) => e
       case NoSuccess(msg, next) => throw new SyntaxError(msg, next)
+      case _ => throw new RuntimeException("Invalid flow reached.")
     }
   }
     

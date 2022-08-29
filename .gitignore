@@ -6,3 +6,4 @@ project/project/
 .sbt
 .metals/
 .vscode/
+.bloop/

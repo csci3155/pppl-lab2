@@ -1,7 +1,7 @@
 .idea
 target/
-project/target/
-project/project/
+project/target/*
+project/project/*
 .ivy2
 .sbt
 .metals/
@@ -9,3 +9,7 @@ project/project/
 .DS_Store
 .github/.DS_Store
 src/.DS_Store
+.ammonite/
+.bloop/
+project/metals.sbt
+.bloop/

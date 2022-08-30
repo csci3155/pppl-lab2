@@ -4,10 +4,8 @@ name: Code Compile
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main", "master" ]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: [ "feedback", "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,7 +22,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
        - name: Setup JDK
         uses: actions/setup-java@v3
-        timeout-minutes: 10
+        timeout-minutes: 5
         with:
           distribution: temurin
           java-version: 11
@@ -32,10 +30,10 @@ jobs:
 
       - name: Get Student Repo
         uses: actions/checkout@v3
-        timeout-minutes: 10
+        timeout-minutes: 5
         with:
           path: student_code
 
       - name: Run sbt compile
-        timeout-minutes: 10
+        timeout-minutes: 5
         run: sbt compile

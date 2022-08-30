@@ -17,33 +17,34 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Student Repo
         uses: actions/checkout@v3
-        timeout-minutes: 5
+        timeout-minutes: 2
         with:
           path: student_code
 
       # Runs a single command using the runners shell
       - name: Master Repo
         uses: actions/checkout@v3
-        timeout-minutes: 5
+        timeout-minutes: 2
         with:
           token: ${{secrets.F22_3155_PAT}}
           repository: csci3155/pppl-labdev
           path: master_code
 
       - name: Prep Grading
-        timeout-minutes: 5
+        timeout-minutes: 2
         run: ./gradepreplab2.sh .
         working-directory: ./master_code
 
       # Grade the current
       - name: Grade current 
-        timeout-minutes: 5
+        timeout-minutes: 2
         run: ./gradelab2.sh ../student_code . ../ 2>&1 | tee ../grading.log
         working-directory: ./master_code
 
@@ -57,3 +58,4 @@ jobs:
         with:
           name: grading.log
           path: grading.log
+          

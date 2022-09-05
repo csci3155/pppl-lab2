@@ -9,10 +9,7 @@ import flatspec._
 /*
  * This file contains a number of *Spec classes that define a set of
  * tests.
- *
- * All of the tests are gathered together in Lab2Suite.
  */
-
 class Lab2Spec(lab2: Lab2Like) extends AnyFlatSpec {
   import lab2._
 
@@ -250,8 +247,3 @@ class Lab2SpecRunner extends Lab2Spec(Lab2)
 // The next bit of code runs a test for each .jsy file in src/test/resources/lab2.
 // The test expects a corresponding .ans file with the expected result.
 class Lab2JsyTests extends JavascriptyTester(None, "lab2", Lab2)
-
-class Lab2Suite extends Suites(
-  new Lab2SpecRunner,
-  new Lab2JsyTests
-)

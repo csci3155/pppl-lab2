@@ -5,17 +5,20 @@
  * interactively with your implementations in Lab2.scala.
  */
 
-// Imports the parse function from jsy.lab1.Parser
-import jsy.lab2.Parser.parse
+// Imports the parse and parseFile functions
+import jsy.lab2.Parser.{parse, parseFile}
 
 // Imports the ast nodes
 import jsy.lab2.ast._
 
-// Imports all of the functions form jsy.student.Lab2 (your implementations in Lab2.scala)
+// Imports all of the functions from your implementation
 import jsy.student.Lab2._
 
 // Call the JavaScripty parser (from the provided library) on a string
 val negFourAST = parse("-4")
+
+// Construct an AST directly
+val negFiveAST: Expr = Unary(Neg, N(5.0))
 
 // Evaluate that JavaScripty expression.
 //eval(negFourAST)
@@ -24,3 +27,8 @@ val negFourAST = parse("-4")
 // which calls the parser and then delegates to your eval function.
 //eval("undefined + 1")
 
+// Parse the JavaScripty expression in your worksheet
+val worksheetJsy = parseFile("src/main/scala/jsy/student/Lab2.worksheet.js")
+
+// Eval the JavaScripty expression in your worksheet
+//eval(worksheetJsy)

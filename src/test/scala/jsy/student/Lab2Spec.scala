@@ -251,4 +251,7 @@ class Lab2SpecRunner extends Lab2Spec(Lab2)
 // The test expects a corresponding .ans file with the expected result.
 class Lab2JsyTests extends JavascriptyTester(None, "lab2", Lab2)
 
-
+class Lab2Suite extends Suites(
+  new Lab2SpecRunner,
+  new Lab2JsyTests
+)

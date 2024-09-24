@@ -1,7 +1,7 @@
-package jsy.student
+package jsy.lab2
 
 object Lab2 {
-  import jsy.lab2.ast._
+  import ast._
   /*
    * CSCI 3155: Lab 2
    * <Your Name>

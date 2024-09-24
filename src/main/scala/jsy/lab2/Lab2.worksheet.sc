@@ -12,7 +12,7 @@ import jsy.lab2.Parser.{parse, parseFile}
 import jsy.lab2.ast._
 
 // Imports all of the functions from your implementation
-import jsy.student.Lab2._
+import jsy.lab2.Lab2._
 
 // Call the JavaScripty parser (from the provided library) on a string
 val negFourAST = parse("-4")
@@ -28,7 +28,7 @@ val negFiveAST: Expr = Unary(Neg, N(5.0))
 //eval("undefined + 1")
 
 // Parse the JavaScripty expression in your worksheet
-val worksheetJsy = parseFile("src/main/scala/jsy/student/Lab2.worksheet.js")
+val worksheetJsy = parseFile("src/main/scala/jsy/lab2/Lab2.worksheet.js")
 
 // Eval the JavaScripty expression in your worksheet
 //eval(worksheetJsy)

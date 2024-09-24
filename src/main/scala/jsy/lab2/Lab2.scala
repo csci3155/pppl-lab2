@@ -1,6 +1,6 @@
 package jsy.lab2
 
-object Lab2 {
+object Lab2 extends jsy.util.JsyApplication {
   import ast._
   /*
    * CSCI 3155: Lab 2
@@ -89,17 +89,34 @@ object Lab2 {
     }
   }
 
-  /** Interface to run your interpreter starting from an empty environment. This
-    * is convenient for unit testing.
-    */
+  /* Interface to run your interpreter starting from an empty environment. This is convenient for unit testing.  */
   def eval(e: Expr): Expr = {
     require(closed(e))
     eval(empty, e)
   }
 
-  /** Interface to run your interpreter from a string. This is convenient for
-    * unit testing.
-    */
+  /* Interface to run your interpreter from a string. This is convenient for unit testing.  */
   def eval(s: String): Expr = eval(Parser.parse(s))
 
+  // You may set this debug flag to true to get the debugging output below, but you need to turn it off to pass test cases.
+  // debug = true
+
+  /* Interface to run your interpreter on an input file. This is for file-based integration tests (see Lab2JsyTests in Lab2Spec.scala). */
+  def processFile(file: java.io.File): Unit = {
+
+    if (debug) { println("Parsing ...") }
+
+    val expr = Parser.parseFile(file)
+
+    if (debug) {
+      println("\nExpression AST:\n  " + expr)
+      println("------------------------------------------------------------")
+    }
+
+    if (debug) { println("Evaluating ...") }
+
+    val v = eval(expr)
+
+    println(pretty(v))
+  }
 }

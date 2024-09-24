@@ -1,17 +1,39 @@
-package jsy.student
+package jsy.lab2
 
-import jsy.lab2.Lab2Like
-import jsy.lab2.ast._
-import jsy.tester.JavascriptyTester
-import org.scalatest._
-import flatspec._
+import org.scalatest.flatspec.AnyFlatSpec
+import Parser.parse
+import ast._
+
+/* Import your Lab 1 code. */
+import Lab2._
+
+/**
+ * This is an empty test class that you may use to write your own tests.
+ */
+class Lab2StudentSpec extends AnyFlatSpec {
+
+  val e_toNumber_test1 = ???
+  "toNumber" should s"${e_toNumber_test1}" in {
+    assertResult(???) { toNumber(e_toNumber_test1) }
+  }
+
+  val e_toBoolean_test1 = ???
+  "toBoolean" should s"${e_toBoolean_test1}" in {
+    assertResult(???) { toBoolean(e_toBoolean_test1) }
+  }
+
+  val e_toStr_test1 = ???
+  "toStr" should s"${e_toStr_test1}" in {
+    assertResult(???) { toStr(e_toStr_test1) }
+  }
+
+}
 
 /*
  * This file contains a number of *Spec classes that define a set of
  * tests.
  */
-class Lab2Spec(lab2: Lab2Like) extends AnyFlatSpec {
-  import lab2._
+class Lab2Spec extends AnyFlatSpec {
 
   "And" should "return true only if both expressions are true" in {
     val t = B(true)
@@ -239,11 +261,9 @@ class Lab2Spec(lab2: Lab2Like) extends AnyFlatSpec {
     assert(e3 === B(false))
     assert(e4 === B(true))
   }
-}
 
-// An adapter class to pass in your Lab2 object.
-class Lab2SpecRunner extends Lab2Spec(Lab2)
+}
 
 // The next bit of code runs a test for each .jsy file in src/test/resources/lab2.
 // The test expects a corresponding .ans file with the expected result.
-class Lab2JsyTests extends JavascriptyTester(None, "lab2", Lab2)
+class Lab2JsyTests extends jsy.tester.JavascriptyTester(None, "lab2", Lab2)

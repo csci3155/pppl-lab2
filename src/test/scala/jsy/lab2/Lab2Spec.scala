@@ -1,11 +1,11 @@
-package jsy.student
+package jsy.lab2
 
 import org.scalatest.flatspec.AnyFlatSpec
-import jsy.lab2.Parser.parse
-import jsy.lab2.ast._
+import Parser.parse
+import ast._
 
 /* Import your Lab 1 code. */
-import jsy.lab2.Lab2._
+import Lab2._
 
 /**
  * This is an empty test class that you may use to write your own tests.
@@ -266,4 +266,4 @@ class Lab2Spec extends AnyFlatSpec {
 
 // The next bit of code runs a test for each .jsy file in src/test/resources/lab2.
 // The test expects a corresponding .ans file with the expected result.
-class Lab2JsyTests extends jsy.tester.JavascriptyTester(None, "lab2", jsy.lab2.Lab2)
+class Lab2JsyTests extends jsy.tester.JavascriptyTester(None, "lab2", Lab2)

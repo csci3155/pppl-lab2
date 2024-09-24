@@ -5,7 +5,7 @@ object Lab2 {
   /*
    * CSCI 3155: Lab 2
    * <Your Name>
-   * 
+   *
    * Partner: <Your Partner's Name>
    * Collaborators: <Any Collaborators>
    */
@@ -40,7 +40,7 @@ object Lab2 {
     require(isValue(v))
     (v: @unchecked) match {
       case N(n) => n
-      case _ => ???
+      case _    => ???
     }
   }
 
@@ -48,22 +48,22 @@ object Lab2 {
     require(isValue(v))
     (v: @unchecked) match {
       case B(b) => b
-      case _ => ???
+      case _    => ???
     }
   }
 
   def toStr(v: Expr): String = {
     require(isValue(v))
     (v: @unchecked) match {
-      case S(s) => s
+      case S(s)      => s
       case Undefined => "undefined"
-      case _ => ???
+      case _         => ???
     }
   }
 
   /* We represent a variable environment as a map from a string of the
    * variable name to the value to which it is bound.
-   * 
+   *
    * You may use the following provided helper functions to manipulate
    * environments, which are just thin wrappers around the Map type
    * in the Scala standard library.  You can use the Scala standard
@@ -88,5 +88,18 @@ object Lab2 {
       case _ => ???
     }
   }
+
+  /** Interface to run your interpreter starting from an empty environment. This
+    * is convenient for unit testing.
+    */
+  def eval(e: Expr): Expr = {
+    require(closed(e))
+    eval(empty, e)
+  }
+
+  /** Interface to run your interpreter from a string. This is convenient for
+    * unit testing.
+    */
+  def eval(s: String): Expr = eval(Parser.parse(s))
 
 }

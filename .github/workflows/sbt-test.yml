@@ -26,7 +26,7 @@ jobs:
           path: student_code
 
       - name: Install sbt
-        uses: coursier/setup-action@v1
+        uses: coursier/setup-action@v3
         with:
           jvm: temurin:25
           apps: sbt

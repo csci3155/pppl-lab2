@@ -30,6 +30,11 @@ jobs:
           distribution: temurin
           java-version: 11
           cache: sbt
+      
+      - name: Install sbt
+        run: |
+          apt-get update
+          apt-get install -y sbt
 
       - name: Run sbt compile
         run: sbt compile

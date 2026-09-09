@@ -24,17 +24,11 @@ jobs:
         with:
           path: student_code
 
-      - name: Setup JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: temurin
-          java-version: 11
-          cache: sbt
-      
       - name: Install sbt
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y sbt
+        uses: coursier/setup-action@v1
+        with:
+          jvm: temurin:25
+          apps: sbt
 
       - name: Run sbt compile
         run: sbt compile

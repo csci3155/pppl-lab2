@@ -24,6 +24,11 @@ jobs:
         with:
           path: student_code
 
+      - name: Cache Coursier
+        uses: coursier/cache-action@v7
+        with:
+          root: student_code
+
       - name: Install sbt
         uses: coursier/setup-action@v3
         with:

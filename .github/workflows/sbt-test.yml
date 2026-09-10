@@ -21,16 +21,20 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Get Student Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           path: student_code
 
-      - name: Setup JDK
-        uses: actions/setup-java@v3
+      - name: Cache Coursier
+        uses: coursier/cache-action@v7
         with:
-          distribution: temurin
-          java-version: 11
-          cache: sbt
+          root: student_code
+
+      - name: Install sbt
+        uses: coursier/setup-action@v3
+        with:
+          jvm: temurin:25
+          apps: sbt
 
       - name: Run sbt test
         run: sbt test

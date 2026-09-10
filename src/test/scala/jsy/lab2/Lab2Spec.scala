@@ -2,10 +2,10 @@ package jsy.lab2
 
 import org.scalatest.flatspec.AnyFlatSpec
 import Parser.parse
-import ast._
+import ast.*
 
 /* Import your Lab 1 code. */
-import Lab2._
+import Lab2.*
 
 /**
  * This is an empty test class that you may use to write your own tests.

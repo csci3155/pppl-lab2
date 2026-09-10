@@ -9,10 +9,10 @@
 import jsy.lab2.Parser.{parse, parseFile}
 
 // Imports the ast nodes
-import jsy.lab2.ast._
+import jsy.lab2.ast.*
 
 // Imports all of the functions from your implementation
-import jsy.lab2.Lab2._
+import jsy.lab2.Lab2.*
 
 // Call the JavaScripty parser (from the provided library) on a string
 val negFourAST = parse("-4")
